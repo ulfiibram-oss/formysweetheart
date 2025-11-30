@@ -5,257 +5,157 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Untuk Kamu ❤️</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap');
 
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: "Poppins", sans-serif;
-        background: radial-gradient(circle at top, #1a1d2d, #0f1118);
-        color: #fff;
-        overflow-x: hidden;
-        position: relative;
-    }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: radial-gradient(circle at top, #1a1d2d, #0f1118);
+    color: #fff;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
 
-    /* Efek bokeh */
-    .bokeh {
-        position: fixed;
-        width: 200px;
-        height: 200px;
-        background: rgba(255, 150, 180, 0.15);
-        filter: blur(80px);
-        border-radius: 50%;
-        top: 10%;
-        left: 20%;
-        animation: pulse 8s infinite ease-in-out;
-    }
-    .bokeh2 {
-        position: fixed;
-        width: 250px;
-        height: 250px;
-        background: rgba(255, 120, 160, 0.12);
-        filter: blur(100px);
-        border-radius: 50%;
-        bottom: 5%;
-        right: 10%;
-        animation: pulse 10s infinite ease-in-out;
-    }
-    @keyframes pulse {
-        50% { transform: scale(1.2); opacity: 0.6; }
-    }
+.bokeh, .bokeh2 {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+}
+.bokeh {
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 150, 180, 0.15);
+    top: 10%;
+    left: 20%;
+    animation: pulse 8s infinite ease-in-out;
+}
+.bokeh2 {
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 120, 160, 0.12);
+    bottom: 5%;
+    right: 10%;
+    animation: pulse 10s infinite ease-in-out;
+}
+@keyframes pulse { 50% { transform: scale(1.2); opacity: 0.6; } }
 
-    .container {
-        width: 100%;
-        max-width: 850px;
-        margin: 70px auto 0 auto;
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: center;
-        backdrop-filter: blur(12px);
-        background: rgba(255, 255, 255, 0.04);
-        border-radius: 18px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 0 25px rgba(255, 180, 200, 0.12);
-        animation: fadeIn 2s ease forwards;
-    }
+.container {
+    width: 95%;
+    max-width: 850px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 25px rgba(255, 180, 200, 0.12);
+    z-index: 1;
+}
 
-    .hook {
-        font-size: 30px;
-        font-weight: 300;
-        opacity: 0;
-        animation: fadeIn 2s ease forwards 0.5s;
-        text-shadow: 0 0 15px #ff6b81;
-    }
+.hook {
+    font-size: 28px;
+    font-weight: 300;
+    text-shadow: 0 0 15px #ff6b81;
+    margin-bottom: 15px;
+}
 
-    .divider {
-        width: 120px;
-        height: 2px;
-        background: linear-gradient(to right, transparent, #ff6b81, transparent);
-        margin: 20px auto;
-        opacity: 0;
-        animation: fadeIn 2s ease forwards 1s;
-    }
+.divider {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ff6b81, transparent);
+    margin: 20px auto;
+}
 
-    .slideshow {
-        width: 90vw;
-        max-width: 330px;
-        height: auto;
-        aspect-ratio: 1 / 1;
-        border-radius: 25px;
-        overflow: hidden;
-        margin: 20px auto 0 auto;
-        position: relative;
-        animation: float 3s ease-in-out infinite;
-        border: 4px solid rgba(255, 255, 255, 0.15);
-        box-shadow: 0 0 35px rgba(255, 140, 160, 0.25);
-    }
+.slideshow {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 20px auto;
+    position: relative;
+    border: 4px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 35px rgba(255, 140, 160, 0.25);
+}
 
-    .slide {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        opacity: 0;
-        transition: opacity 1.8s ease;
-    }
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.8s ease;
+}
+.slide.active { opacity: 1; }
 
-    .slide.active {
-        opacity: 1;
-    }
+.message {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.6;
+    text-shadow: 0 0 10px #ff6b81;
+}
 
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-12px); }
-        100% { transform: translateY(0); }
-    }
+.btn {
+    margin-top: 25px;
+    background: linear-gradient(135deg, #ff6b81, #ff4d6d);
+    padding: 12px 30px;
+    border: none;
+    font-size: 18px;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 100, 130, 0.28);
+}
+.btn:hover { transform: scale(1.1); box-shadow: 0 12px 25px rgba(255, 100, 130, 0.48); }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(25px); }
-        to   { opacity: 1; transform: translateY(0); }
-    }
+.heart { position: fixed; top: -10px; color: #ff6b81; font-size: 24px; animation: fall 4s linear infinite; opacity: 0.8; }
+@keyframes fall { to { transform: translateY(100vh); opacity: 0; } }
 
-    .message {
-        margin-top: 30px;
-        font-size: 22px;
-        opacity: 0;
-        animation: fadeIn 2s ease forwards 1.7s;
-        font-weight: 300;
-        line-height: 1.7;
-        text-shadow: 0 0 10px #ff6b81;
-    }
+#loveModal {
+    position: fixed; top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.85);
+    display:flex; justify-content:center; align-items:center;
+    opacity:0; pointer-events:none; z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+#loveModal.show { opacity:1; pointer-events:auto; }
 
-    /* Tombol cantik */
-    .btn {
-        margin-top: 35px;
-        background: linear-gradient(135deg, #ff6b81, #ff4d6d);
-        padding: 15px 35px;
-        border: none;
-        font-size: 20px;
-        border-radius: 12px;
-        color: white;
-        cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
-        opacity: 0;
-        animation: fadeIn 2s ease forwards 2.3s;
-        box-shadow: 0 8px 20px rgba(255, 100, 130, 0.28);
-        position: relative;
-        z-index: 1;
-    }
+#modalContent {
+    background: linear-gradient(135deg,#ff6b81,#ff4d6d);
+    padding: 30px 25px;
+    border-radius: 20px;
+    text-align:center;
+    color:white;
+    max-width: 400px;
+    box-shadow: 0 0 50px rgba(255,100,140,0.7);
+}
 
-    .btn:hover {
-        transform: scale(1.1) rotate(-2deg);
-        box-shadow: 0 12px 25px rgba(255, 100, 130, 0.48);
-    }
+#modalContent h2 { font-family: 'Great Vibes', cursive; font-size: 32px; margin-bottom: 15px; }
+#modalContent p { font-size: 18px; line-height:1.5; margin-bottom: 20px; }
+#modalContent button {
+    padding: 10px 20px; font-size: 16px; border:none; border-radius:10px;
+    background:white; color:#ff4d6d; cursor:pointer; font-weight:bold;
+}
+#modalContent button:hover { transform: scale(1.1); background:#ffe6ea; }
 
-    .heart {
-        position: fixed;
-        top: -10px;
-        color: #ff6b81;
-        font-size: 24px;
-        animation: fall 4s linear infinite;
-        opacity: 0.8;
-    }
+.confetti-heart { position: absolute; color: #ff6b81; font-size: 16px; animation: confettiFall 2s linear forwards; pointer-events: none; }
+@keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity:1; } 100% { transform: translateY(300px) rotate(360deg); opacity:0; } }
 
-    @keyframes fall {
-        to {
-            transform: translateY(100vh);
-            opacity: 0;
-        }
-    }
-
-    /* Custom Modal */
-    #loveModal {
-        position: fixed;
-        top:0; left:0;
-        width:100%; height:100%;
-        background: rgba(0,0,0,0.85);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        z-index: 9999;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        pointer-events: none;
-    }
-
-    #loveModal.show {
-        opacity:1;
-        pointer-events: auto;
-    }
-
-    #modalContent {
-        background: linear-gradient(135deg,#ff6b81,#ff4d6d);
-        padding: 30px 40px;
-        border-radius: 20px;
-        text-align:center;
-        color:white;
-        max-width: 400px;
-        box-shadow: 0 0 50px rgba(255,100,140,0.7);
-        animation: popIn 0.5s ease forwards;
-    }
-
-    #modalContent h2 {
-        font-family: 'Great Vibes', cursive;
-        font-size: 36px;
-        margin-bottom: 15px;
-        text-shadow: 0 0 15px #fff;
-    }
-
-    #modalContent p {
-        font-size: 18px;
-        line-height:1.5;
-        margin-bottom: 20px;
-    }
-
-    #modalContent button {
-        padding: 12px 25px;
-        font-size: 18px;
-        border:none;
-        border-radius:10px;
-        background:white;
-        color:#ff4d6d;
-        cursor:pointer;
-        font-weight:bold;
-        transition:0.3s;
-    }
-
-    #modalContent button:hover {
-        transform: scale(1.1);
-        background:#ffe6ea;
-    }
-
-    @keyframes popIn {
-        0% { transform: scale(0.5); opacity:0; }
-        100% { transform: scale(1); opacity:1; }
-    }
-
-    /* Confetti hearts */
-    .confetti-heart {
-        position: absolute;
-        color: #ff6b81;
-        font-size: 16px;
-        animation: confettiFall 2s linear forwards;
-        pointer-events: none;
-    }
-
-    @keyframes confettiFall {
-        0% { transform: translateY(0) rotate(0deg); opacity:1; }
-        100% { transform: translateY(300px) rotate(360deg); opacity:0; }
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-        .hook {
-            font-size: 18px;
-        }
-        .message {
-            font-size: 16px;
-        }
-        .btn {
-            font-size: 16px;
-            padding: 10px 20px;
-        }
-    }
+@media (max-width: 480px){
+    .hook { font-size: 20px; }
+    .message { font-size: 16px; }
+    .btn { font-size: 16px; padding: 10px 20px; }
+    .slideshow { max-width: 90%; }
+}
 </style>
 </head>
 <body>
@@ -264,23 +164,13 @@
 <div class="bokeh2"></div>
 
 <div class="container">
-    <div class="hook">
-        Dari sekian banyak momen… ini semua adalah kenangan yang selalu aku simpan. ❤️
-    </div>
-
+    <div class="hook">Dari sekian banyak momen… ini semua adalah kenangan yang selalu aku simpan. ❤️</div>
     <div class="divider"></div>
-
     <div class="slideshow" id="slideshow"></div>
-
-    <div class="message">
-        Terima kasih sudah jadi bagian terindah dalam hidupku.  
-        Semoga kamu merasakan hangatnya kenangan kita di sini…
-    </div>
-
+    <div class="message">Terima kasih sudah jadi bagian terindah dalam hidupku. Semoga kamu merasakan hangatnya kenangan kita di sini…</div>
     <button class="btn" onclick="showLove()">Aku masih sayang kamu ❤️</button>
 </div>
 
-<!-- Custom Modal -->
 <div id="loveModal">
     <div id="modalContent">
         <h2>❤️ Aku Masih Sayang Kamu ❤️</h2>
@@ -290,68 +180,52 @@
 </div>
 
 <script>
-    // Modal & Confetti
-    const modal = document.getElementById("loveModal");
-    const closeModalBtn = document.getElementById("closeModal");
+const modal = document.getElementById("loveModal");
+const closeModalBtn = document.getElementById("closeModal");
 
-    function showLove() {
-        modal.classList.add("show");
-
-        // Confetti hati
-        for(let i=0;i<30;i++){
-            const heart = document.createElement("div");
-            heart.className="confetti-heart";
-            heart.style.left = Math.random()*window.innerWidth+"px";
-            heart.style.fontSize = (10+Math.random()*20)+"px";
-            heart.innerHTML = "❤️";
-            document.body.appendChild(heart);
-            setTimeout(()=>heart.remove(),2000);
-        }
-
-        // Alert tambahan
-        setTimeout(()=> alert("Aku bener-bener sayang banget sama kamu… ❤️"), 300);
-    }
-
-    closeModalBtn.addEventListener("click", () => {
-        modal.classList.remove("show");
-    });
-
-    modal.addEventListener("click", (e) => {
-        if(e.target === modal){
-            modal.classList.remove("show");
-        }
-    });
-
-    // Slideshow
-    const photos = ["foto1.png","foto2.png","foto3.png","foto4.png","foto5.png","foto6.png","foto7.png"];
-    const slideshow = document.getElementById("slideshow");
-
-    photos.forEach((photo,index)=>{
-        const div=document.createElement("div");
-        div.classList.add("slide");
-        div.style.backgroundImage=`url('${photo}')`;
-        if(index===0) div.classList.add("active");
-        slideshow.appendChild(div);
-    });
-
-    let currentIndex=0;
-    const slides=document.querySelectorAll(".slide");
-    setInterval(()=>{
-        slides[currentIndex].classList.remove("active");
-        currentIndex=(currentIndex+1)%slides.length;
-        slides[currentIndex].classList.add("active");
-    },3000);
-
-    // Hati jatuh
-    setInterval(()=>{
-        const heart=document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML="❤️";
-        heart.style.left=Math.random()*window.innerWidth+"px";
-        heart.style.fontSize=(20+Math.random()*20)+"px";
+function showLove() {
+    modal.classList.add("show");
+    for(let i=0;i<30;i++){
+        const heart = document.createElement("div");
+        heart.className="confetti-heart";
+        heart.style.left = Math.random()*window.innerWidth+"px";
+        heart.style.fontSize = (10+Math.random()*20)+"px";
+        heart.innerHTML = "❤️";
         document.body.appendChild(heart);
-        setTimeout(()=>heart.remove(),4000);
-    },350);
+        setTimeout(()=>heart.remove(),2000);
+    }
+    setTimeout(()=> alert("Aku bener-bener sayang banget sama kamu… ❤️"), 300);
+}
+
+closeModalBtn.addEventListener("click", () => { modal.classList.remove("show"); });
+modal.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("show"); });
+
+const photos = ["foto1.png","foto2.png","foto3.png","foto4.png","foto5.png","foto6.png","foto7.png"];
+const slideshow = document.getElementById("slideshow");
+photos.forEach((photo,index)=>{
+    const div=document.createElement("div");
+    div.classList.add("slide");
+    div.style.backgroundImage=`url('${photo}')`;
+    if(index===0) div.classList.add("active");
+    slideshow.appendChild(div);
+});
+let currentIndex=0;
+const slides=document.querySelectorAll(".slide");
+setInterval(()=>{
+    slides[currentIndex].classList.remove("active");
+    currentIndex=(currentIndex+1)%slides.length;
+    slides[currentIndex].classList.add("active");
+},3000);
+
+setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*window.innerWidth+"px";
+    heart.style.fontSize=(20+Math.random()*20)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),4000);
+},350);
 </script>
 
 </body>
