@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Untuk Kamu ❤️</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap');
@@ -56,6 +57,9 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         box-shadow: 0 0 25px rgba(255, 180, 200, 0.12);
         animation: fadeIn 2s ease forwards;
+        box-sizing: border-box; /* Tambahan responsif */
+        padding-left: 20px;     /* Tambahan responsif */
+        padding-right: 20px;    /* Tambahan responsif */
     }
 
     .hook {
@@ -241,6 +245,53 @@
         0% { transform: translateY(0) rotate(0deg); opacity:1; }
         100% { transform: translateY(300px) rotate(360deg); opacity:0; }
     }
+
+    /* -------- Responsiveness --------- */
+    @media (max-width: 768px) {
+        .container {
+            max-width: 90%;
+            margin-top: 40px;
+            padding: 20px;
+        }
+        .hook {
+            font-size: 22px;
+        }
+        .message {
+            font-size: 18px;
+        }
+        .btn {
+            font-size: 18px;
+            padding: 12px 25px;
+        }
+        .slideshow {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            max-width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+        }
+        .hook {
+            font-size: 18px;
+        }
+        .message {
+            font-size: 16px;
+        }
+        .btn {
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+        .slideshow {
+            width: 180px;
+            height: 180px;
+            border-radius: 15px;
+        }
+    }
 </style>
 </head>
 <body>
@@ -338,5 +389,6 @@
         setTimeout(()=>heart.remove(),4000);
     },350);
 </script>
+
 </body>
 </html>
